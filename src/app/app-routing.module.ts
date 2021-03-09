@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'halaman-baru',
+    loadChildren: () => import('./halaman-baru/halaman-baru.module').then( m => m.HalamanBaruPageModule)
+  },
+  {
+    path: 'halaman-fav',
+    loadChildren: () => import('./halaman-fav/halaman-fav.module').then( m => m.HalamanFavPageModule)
+  },
 ];
 
 @NgModule({

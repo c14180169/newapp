@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorite Page</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let note of listNotes">
+    <ion-item *ngIf="note.favStatus">
+      Judul -> {{note.judulNote}} <br />
+      Isi -> {{note.isiNote}} <br />
+      Tanggal -> {{note.tglNote}} <br />
+      <ion-button (click)="removeFav(note.idNote)" *ngIf="note.favStatus">
+        Remove from Favorite
+      </ion-button>
+      <br/>
+    </ion-item>
+  </div>
+</ion-content>

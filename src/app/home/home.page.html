@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ion-button routerLink="/halaman-baru">Input</ion-button>
+    <ion-button routerLink="/halaman-fav">Favorite</ion-button>
+    <br/><br/>
+    
+    <ion-item *ngFor="let note of listNotes">
+      Judul -> {{note.judulNote}} <br />
+      Isi -> {{note.isiNote}} <br />
+      Tanggal -> {{note.tglNote}} <br />
+      <ion-button (click)="addFav(note.idNote)" *ngIf="!note.favStatus">Add to Favorite</ion-button>
+      <ion-button (click)="removeFav(note.idNote)" *ngIf="note.favStatus">
+        Remove from Favorite
+      </ion-button>
+      <br/>
+    </ion-item>
+
   </div>
+
 </ion-content>

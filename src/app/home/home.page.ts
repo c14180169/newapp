@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GlobalNoteService } from '../global-note.service';
+import { Note } from '../note.model';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,20 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  listNotes : Note[] = [];
+
+  constructor(public globalVar : GlobalNoteService) {}
+
+  ionViewWillEnter(){
+    this.listNotes = this.globalVar.getNotes();
+  }
+
+  addFav(index){
+    this.listNotes[index-1].favStatus = true;
+  }
+
+  removeFav(index){
+    this.listNotes[index-1].favStatus = false;
+  }
 
 }
